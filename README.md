@@ -4,8 +4,8 @@ RadBank is a solution to a coding test to develop a basic bank web application.
 
 The solution includes the following:
 
-* RadBank API: a .NET Core API to serve as the backend [Click here to check API readme](./rad-bank-api/README.md)
-* RadBank UI: an Angular front-end with Jest, NGRX, and Storybooks [Click here to check UI readme](./rad-bank-ui/README.md)
+* RadBank API: a .NET Core API to serve as the backend [Click here to check API readme](https://github.com/AdhamFA/RadBank/tree/main/rad-bank-api)
+* RadBank UI: an Angular front-end with Jest, NGRX, and Storybooks [Click here to check UI readme](https://github.com/AdhamFA/RadBank/tree/main/rad-bank-ui)
 
 The requirements for the application are as such:
 
