@@ -5,21 +5,39 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { HeroComponent } from './hero/hero.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { RouterModule } from '@angular/router';
+import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
+import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  declarations: [HeaderComponent, HeroComponent],
+  declarations: [HeaderComponent, HeroComponent, SignInFormComponent, SignUpFormComponent],
   imports: [
     CommonModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatMenuModule,
+    RouterModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
   ],
   exports: [
+    HeroComponent,
+    HeaderComponent,
+    SignInFormComponent,
+    SignUpFormComponent,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    HeaderComponent,
-    HeroComponent,
+    MatMenuModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
   ],
 })
 export class CommonComponentsModule {}

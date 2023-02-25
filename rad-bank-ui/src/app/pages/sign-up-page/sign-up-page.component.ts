@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up-page',
@@ -6,5 +7,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./sign-up-page.component.scss']
 })
 export class SignUpPageComponent {
-
 }

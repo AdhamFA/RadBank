@@ -15,6 +15,10 @@ function getUser(): Observable<UserInterface> {
   return of(user).pipe(delay(2000));
 }
 
+function signUp(newUser: UserInterface): Observable<UserInterface> {
+    return of(newUser).pipe(delay(2000));
+}
+
 @Injectable()
 export class UserEffects {
   signUp$ = createEffect(() =>
