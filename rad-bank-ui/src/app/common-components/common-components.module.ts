@@ -8,6 +8,18 @@ import { HeroComponent } from './hero/hero.component';
 
 @NgModule({
   declarations: [HeaderComponent, HeroComponent],
-  imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
+  exports: [
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    HeaderComponent,
+    HeroComponent,
+  ],
 })
 export class CommonComponentsModule {}

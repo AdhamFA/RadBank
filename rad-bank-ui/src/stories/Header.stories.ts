@@ -1,10 +1,7 @@
 import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
 import type { Story, Meta } from '@storybook/angular';
 import { HeaderComponent } from 'src/app/common-components/header/header.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
+import { CommonComponentsModule } from 'src/app/common-components/common-components.module';
 
 export default {
   title: 'Components/Header',
@@ -12,7 +9,7 @@ export default {
   decorators: [
     moduleMetadata({
       declarations: [],
-      imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule],
+      imports: [CommonComponentsModule],
     }),
   ],
 } as Meta;
