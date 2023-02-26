@@ -16,7 +16,6 @@ export class LandingPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._store.dispatch(signIn());
   }
 
 }

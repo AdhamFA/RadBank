@@ -15,7 +15,8 @@ function getUser(): Observable<UserInterface> {
   return of(user).pipe(delay(2000));
 }
 
-function signUp(newUser: UserInterface): Observable<UserInterface> {
+
+function createUser(newUser: UserInterface): Observable<UserInterface> {
     return of(newUser).pipe(delay(2000));
 }
 
@@ -24,8 +25,8 @@ export class UserEffects {
   signUp$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserActions.signUp),
-      mergeMap(() => {
-        return getUser().pipe(
+      mergeMap(({user}) => {
+        return createUser(user).pipe(
           map((user) => UserActions.signUpSuccess({ user })),
           catchError((error) =>
             of(UserActions.signUpFailure({ error: error.message }))
@@ -38,7 +39,8 @@ export class UserEffects {
   signIn$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserActions.signIn),
-      mergeMap(() => {
+      mergeMap(({email}) => {
+        console.log(email)
         return getUser().pipe(
           map((user) => UserActions.signInSuccess({ user })),
           catchError((error) =>

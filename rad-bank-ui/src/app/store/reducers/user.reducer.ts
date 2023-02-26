@@ -37,5 +37,5 @@ export const userReducer = createReducer(
     error: action.error,
     loggedIn: false,
   })),
-  on(userActions.signOut, (state) => ({ ...state, isLoading: false, user: undefined }))
+  on(userActions.signOut, (state) => ({ ...state, isLoading: false, user: undefined, loggedIn: false }))
 );

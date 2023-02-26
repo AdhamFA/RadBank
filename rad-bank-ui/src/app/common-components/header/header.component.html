@@ -1,7 +1,9 @@
 <header>
   <mat-toolbar color="primary">
-    <mat-icon>account_balance</mat-icon>
-    <h2>RadBank</h2>
+    <button mat-flat-button color="primary" [routerLink]="['/']">
+      <mat-icon>account_balance</mat-icon>
+      <h2>RadBank</h2>
+    </button>
     <span class="spacer"></span>
     <button
       mat-icon-button
@@ -14,8 +16,8 @@
     <mat-menu #menu="matMenu">
       <a [routerLink]="['/']" mat-menu-item>Home</a>
       <a [routerLink]="['/accounts']" mat-menu-item>My Accounts</a>
-      <a [routerLink]="['/']" mat-menu-item>Sign out</a>
-      <a [routerLink]="['/sign-in']" mat-menu-item>Sign in</a>
+      <a *ngIf="isLoggedIn$ | async" (click)="signOut()" mat-menu-item>Sign out</a>
+      <a *ngIf="!(isLoggedIn$ | async)" [routerLink]="['/sign-in']" mat-menu-item>Sign in</a>
     </mat-menu>
   </mat-toolbar>
 </header>

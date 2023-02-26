@@ -4,7 +4,7 @@
       <input matInput [formControl]="email" required />
       <mat-error *ngIf="email.invalid">{{ getErrorMessage(email) }}</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary">Sign In</button>
+    <button mat-raised-button (click)="signIn()" color="primary">Sign In</button>
     <button mat-button [routerLink]="['/sign-up']" color="primary">Don't have an account? Sign Up!</button>
   </div>
   

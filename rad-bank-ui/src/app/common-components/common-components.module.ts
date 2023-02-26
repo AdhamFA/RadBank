@@ -12,9 +12,12 @@ import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AccountsListComponent } from './accounts-list/accounts-list.component';
+import {MatTableModule} from '@angular/material/table';
+
 
 @NgModule({
-  declarations: [HeaderComponent, HeroComponent, SignInFormComponent, SignUpFormComponent],
+  declarations: [HeaderComponent, HeroComponent, SignInFormComponent, SignUpFormComponent, AccountsListComponent],
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -25,12 +28,14 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatTableModule,
   ],
   exports: [
     HeroComponent,
     HeaderComponent,
     SignInFormComponent,
     SignUpFormComponent,
+    AccountsListComponent,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
