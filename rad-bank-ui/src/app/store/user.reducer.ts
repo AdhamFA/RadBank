@@ -48,6 +48,7 @@ export const userReducer = createReducer(
     ...state,
     isLoading: false,
     user: undefined,
+    accounts: undefined,
     loggedIn: false,
   })),
   on(accountActions.accountDeposit, (state) => ({ ...state, isLoading: true })),

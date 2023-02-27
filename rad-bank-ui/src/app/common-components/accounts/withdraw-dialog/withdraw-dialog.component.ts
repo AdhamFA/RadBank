@@ -5,7 +5,9 @@ import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
-import { isLoadingSelector, errorSelector } from 'src/app/store/selectors';
+import { accountWithdraw } from 'src/app/store/account.actions';
+import { isLoadingSelector, errorSelector, userSelector } from 'src/app/store/selectors';
+import { UserInterface } from 'src/app/types/user.interface';
 
 @Component({
   selector: 'app-withdraw-dialog',
@@ -15,6 +17,7 @@ import { isLoadingSelector, errorSelector } from 'src/app/store/selectors';
 export class WithdrawDialogComponent {
   isLoading$: Observable<boolean>;
   error$: Observable<string>;
+  user$: Observable<UserInterface>;
   amount = new FormControl(0, [Validators.required]);
   constructor(
     private _router: Router,
@@ -24,6 +27,21 @@ export class WithdrawDialogComponent {
   ) {
     this.isLoading$ = this._store.pipe(select(isLoadingSelector));
     this.error$ = this._store.pipe(select(errorSelector));
+    this.user$ = this._store.pipe(select(userSelector))
+  }
+
+  withdraw() {
+    if (this.amount.value) {
+      this.user$.subscribe((user) => {
+        this._store.dispatch(
+          accountWithdraw({
+            accountID: this.data.id,
+            ammount: this.amount.value!,
+            email: user.email,
+          })
+        );
+      });
+    }
   }
 
   getErrorMessage(fc: FormControl) {

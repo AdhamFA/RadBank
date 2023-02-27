@@ -1,4 +1,4 @@
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<mat-table [dataSource]="accounts$" class="mat-elevation-z8">
   <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef> Account # </mat-header-cell>
     <mat-cell *matCellDef="let account"> {{ account.id }} </mat-cell>
@@ -20,21 +20,21 @@
       <div class="actions">
         <button
           mat-stroked-button
-          (click)="openDepositDialog(account.id)"
+          (click)="openDepositDialog(account)"
           color="primary"
         >
           Deposit
         </button>
         <button
           mat-stroked-button
-          (click)="openWithdrawDialog(account.id)"
+          (click)="openWithdrawDialog(account)"
           color="primary"
         >
           Withdraw
         </button>
         <button
           mat-flat-button
-          (click)="openDeleteDialog(account.id)"
+          (click)="openDeleteDialog(account)"
           color="warn"
         >
           Close
@@ -46,6 +46,6 @@
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>
-<button mat-raised-button color="primary" (click)="createAccountDialog()">
+<button class="large-button" mat-raised-button color="primary" (click)="createAccountDialog()">
   Create New Account
 </button>

@@ -12,6 +12,7 @@
   <button
     mat-button
     [disabled]="name.invalid"
+    (click)="createAccount()"
     [mat-dialog-close]="true"
     cdkFocusInitial
   >

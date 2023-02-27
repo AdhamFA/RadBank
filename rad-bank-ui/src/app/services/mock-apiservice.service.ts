@@ -39,7 +39,14 @@ export class MockAPIServiceService {
   }
 
   createAccount(newAccount: AccountInterface, email: string) {
-    this.accounts[email].push(newAccount);
+    let accounts = this.accounts[email];
+    let acc: AccountInterface = {
+      id: '00000' + (accounts.length + 1),
+      name: newAccount.name,
+      balance: newAccount.balance,
+    };
+    accounts = [...accounts, acc];
+    this.accounts[email] = accounts;
 
     return of(this.accounts[email]).pipe(delay(2000));
   }
@@ -53,9 +60,11 @@ export class MockAPIServiceService {
   }
 
   withdraw(accountId: string, email: string, amount: number) {
+    let accounts = this.accounts[email];
     let accountIndex = this.accounts[email].findIndex(
       (account) => account.id === accountId
     );
+    let account = accounts[accountIndex];
     let balance = this.accounts[email][accountIndex].balance;
     if (amount / balance > 0.9) {
       return throwError(() => {
@@ -66,7 +75,7 @@ export class MockAPIServiceService {
         return error;
       });
     }
-    let newBalance = this.accounts[email][accountIndex].balance - amount;
+    let newBalance = +this.accounts[email][accountIndex].balance - +amount;
     if (newBalance < 100) {
       return throwError(() => {
         const error: any = new Error(`Your balance cannot be lower than $100`);
@@ -74,15 +83,28 @@ export class MockAPIServiceService {
         return error;
       });
     } else {
-      this.accounts[email][accountIndex].balance = newBalance;
+      let updatedAccount: AccountInterface = {
+        id: account.id,
+        name: account.name,
+        balance: newBalance,
+      };
+      accounts = [
+        ...this.accounts[email].filter((account) => account.id !== accountId),
+        updatedAccount,
+      ];
+
+      this.accounts[email] = accounts;
+
       return of(this.accounts[email]).pipe(delay(2000));
     }
   }
 
   deposit(accountId: string, email: string, amount: number) {
+    let accounts = this.accounts[email];
     let accountIndex = this.accounts[email].findIndex(
       (account) => account.id === accountId
     );
+    let account = accounts[accountIndex];
     if (amount > 10000) {
       return throwError(() => {
         const error: any = new Error(
@@ -92,8 +114,20 @@ export class MockAPIServiceService {
         return error;
       });
     } else {
-      let newBalance = this.accounts[email][accountIndex].balance - amount;
-      this.accounts[email][accountIndex].balance = newBalance;
+      let newBalance = +this.accounts[email][accountIndex].balance + +amount;
+      console.log(newBalance);
+      let updatedAccount: AccountInterface = {
+        id: account.id,
+        name: account.name,
+        balance: newBalance,
+      };
+      accounts = [
+        ...this.accounts[email].filter((account) => account.id !== accountId),
+        updatedAccount,
+      ];
+
+      this.accounts[email] = accounts;
+
       return of(this.accounts[email]).pipe(delay(2000));
     }
   }

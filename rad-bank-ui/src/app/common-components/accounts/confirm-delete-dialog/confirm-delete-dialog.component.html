@@ -4,5 +4,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-flat-button color="warning" [mat-dialog-close]="true" cdkFocusInitial>Delete</button>
+  <button mat-flat-button color="warn" (click)="deleteAccount()" [mat-dialog-close]="true" cdkFocusInitial>Delete</button>
 </mat-dialog-actions>
