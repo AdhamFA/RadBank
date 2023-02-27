@@ -11,6 +11,9 @@ export const initialState: UserStateInterface = {
   error: null,
 };
 
+
+//Due to timing constraints, I am using one state interface that is sharing an error across all different reducers, the correct way would be to have an error object in the interface for user reducers, and another for account reducers
+
 export const userReducer = createReducer(
   initialState,
   on(userActions.signIn, (state) => ({ ...state, isLoading: true })),
@@ -19,6 +22,7 @@ export const userReducer = createReducer(
     isLoading: false,
     user: action.user,
     loggedIn: true,
+    error: null,
   })),
   on(userActions.signInFailure, (state, action) => ({
     ...state,
@@ -32,6 +36,7 @@ export const userReducer = createReducer(
     isLoading: false,
     user: action.user,
     loggedIn: true,
+    error: null,
   })),
   on(userActions.signUpFailure, (state, action) => ({
     ...state,
@@ -50,6 +55,7 @@ export const userReducer = createReducer(
     ...state,
     isLoading: false,
     accounts: action.accounts,
+    error: null,
   })),
   on(accountActions.accountDepositFailure, (state, action) => ({
     ...state,
@@ -64,6 +70,7 @@ export const userReducer = createReducer(
     ...state,
     isLoading: false,
     accounts: action.accounts,
+    error: null,
   })),
   on(accountActions.accountWithdrawFailure, (state, action) => ({
     ...state,
@@ -75,6 +82,7 @@ export const userReducer = createReducer(
     ...state,
     isLoading: false,
     accounts: action.accounts,
+    error: null,
   })),
   on(accountActions.createAccountFailure, (state, action) => ({
     ...state,
@@ -86,6 +94,7 @@ export const userReducer = createReducer(
     ...state,
     isLoading: false,
     accounts: action.accounts,
+    error: null,
   })),
   on(accountActions.deleteAccountFailure, (state, action) => ({
     ...state,
@@ -97,6 +106,7 @@ export const userReducer = createReducer(
     ...state,
     isLoading: false,
     accounts: action.accounts,
+    error: null,
   })),
   on(accountActions.getAccountsFailure, (state, action) => ({
     ...state,

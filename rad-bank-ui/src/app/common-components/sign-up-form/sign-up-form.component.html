@@ -1,24 +1,36 @@
 <div class="example-container">
-    <mat-form-field appearance="fill">
-      <mat-label>Enter your email</mat-label>
-      <input matInput [formControl]="email" required />
-      <mat-error *ngIf="email.invalid">{{ getErrorMessage(email) }}</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Enter your first name</mat-label>
-      <input matInput [formControl]="firstName" required />
-      <mat-error *ngIf="firstName.invalid">{{
-        getErrorMessage(firstName)
-      }}</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Enter your last name</mat-label>
-      <input matInput [formControl]="lastName" required />
-      <mat-error *ngIf="lastName.invalid">{{
-        getErrorMessage(lastName)
-      }}</mat-error>
-    </mat-form-field>
-    <button mat-raised-button (click)="signUp()" color="primary">Sign Up</button>
-    <button mat-button [routerLink]="['/sign-in']" color="primary">Already have an account? Sign In!</button>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your email</mat-label>
+    <input matInput [formControl]="email" required />
+    <mat-error *ngIf="email.invalid">{{ getErrorMessage(email) }}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your first name</mat-label>
+    <input matInput [formControl]="firstName" required />
+    <mat-error *ngIf="firstName.invalid">{{
+      getErrorMessage(firstName)
+    }}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your last name</mat-label>
+    <input matInput [formControl]="lastName" required />
+    <mat-error *ngIf="lastName.invalid">{{
+      getErrorMessage(lastName)
+    }}</mat-error>
+  </mat-form-field>
+  <button
+    *ngIf="!(isLoading$ | async)"
+    mat-raised-button
+    (click)="signUp()"
+    color="primary"
+  >
+    Sign Up
+  </button>
+  <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+  <div *ngIf="error$ | async as error">
+    <p>{{ error }}</p>
   </div>
-  
+  <button mat-button [routerLink]="['/sign-in']" color="primary">
+    Already have an account? Sign In!
+  </button>
+</div>

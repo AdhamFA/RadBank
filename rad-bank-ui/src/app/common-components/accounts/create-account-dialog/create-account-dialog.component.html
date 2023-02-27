@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Please enter the name of the account</h2>
+<mat-dialog-content class="mat-typography">
+  <p>A $100 will automatically be added into your account on creation</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter account name</mat-label>
+    <input matInput [formControl]="name" required />
+    <mat-error *ngIf="name.invalid">{{ getErrorMessage(name) }}</mat-error>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    [disabled]="name.invalid"
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+  >
+    Create
+  </button>
+</mat-dialog-actions>

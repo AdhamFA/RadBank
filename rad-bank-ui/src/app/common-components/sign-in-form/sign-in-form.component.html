@@ -1,10 +1,22 @@
 <div class="example-container">
-    <mat-form-field appearance="fill">
-      <mat-label>Enter your email</mat-label>
-      <input matInput [formControl]="email" required />
-      <mat-error *ngIf="email.invalid">{{ getErrorMessage(email) }}</mat-error>
-    </mat-form-field>
-    <button mat-raised-button (click)="signIn()" color="primary">Sign In</button>
-    <button mat-button [routerLink]="['/sign-up']" color="primary">Don't have an account? Sign Up!</button>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your email</mat-label>
+    <input matInput [formControl]="email" required />
+    <mat-error *ngIf="email.invalid">{{ getErrorMessage(email) }}</mat-error>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    *ngIf="!(isLoading$ | async)"
+    (click)="signIn()"
+    color="primary"
+  >
+    Sign in
+  </button>
+  <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+  <div *ngIf="error$ | async as error">
+    <p>{{ error }}</p>
   </div>
-  
+  <button mat-button [routerLink]="['/sign-up']" color="primary">
+    Don't have an account? Sign Up!
+  </button>
+</div>

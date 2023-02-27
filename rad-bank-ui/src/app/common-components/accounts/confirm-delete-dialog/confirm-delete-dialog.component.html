@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Are you sure you want to delete this account?</h2>
+<mat-dialog-content class="mat-typography">
+  <p>Are you sure you want to delete this account? We will mail you your balance, this is a permenant removal of this account.</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-flat-button color="warning" [mat-dialog-close]="true" cdkFocusInitial>Delete</button>
+</mat-dialog-actions>

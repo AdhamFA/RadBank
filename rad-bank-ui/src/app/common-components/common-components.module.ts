@@ -16,6 +16,10 @@ import { AccountsListComponent } from './accounts/accounts-list/accounts-list.co
 import { MatTableModule } from '@angular/material/table';
 import { WithdrawDialogComponent } from './accounts/withdraw-dialog/withdraw-dialog.component';
 import { DepositDialogComponent } from './accounts/deposit-dialog/deposit-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmDeleteDialogComponent } from './accounts/confirm-delete-dialog/confirm-delete-dialog.component';
+import { CreateAccountDialogComponent } from './accounts/create-account-dialog/create-account-dialog.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,8 @@ import { DepositDialogComponent } from './accounts/deposit-dialog/deposit-dialog
     AccountsListComponent,
     WithdrawDialogComponent,
     DepositDialogComponent,
+    ConfirmDeleteDialogComponent,
+    CreateAccountDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +44,8 @@ import { DepositDialogComponent } from './accounts/deposit-dialog/deposit-dialog
     ReactiveFormsModule,
     MatInputModule,
     MatTableModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     HeroComponent,

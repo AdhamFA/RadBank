@@ -20,7 +20,7 @@ export class MockAPIServiceService {
     if (user) {
       return of(user).pipe(delay(2000));
     } else {
-      throw throwError(() => {
+      return throwError(() => {
         const error: any = new Error(`User does not exist!`);
         error.timestamp = Date.now();
         return error;
@@ -58,7 +58,7 @@ export class MockAPIServiceService {
     );
     let balance = this.accounts[email][accountIndex].balance;
     if (amount / balance > 0.9) {
-      throw throwError(() => {
+      return throwError(() => {
         const error: any = new Error(
           `You cannot take out more than 90% of your balance at once, please divide your withdrawls into seperate transactions`
         );
@@ -68,7 +68,7 @@ export class MockAPIServiceService {
     }
     let newBalance = this.accounts[email][accountIndex].balance - amount;
     if (newBalance < 100) {
-      throw throwError(() => {
+      return throwError(() => {
         const error: any = new Error(`Your balance cannot be lower than $100`);
         error.timestamp = Date.now();
         return error;
@@ -84,7 +84,7 @@ export class MockAPIServiceService {
       (account) => account.id === accountId
     );
     if (amount > 10000) {
-      throw throwError(() => {
+      return throwError(() => {
         const error: any = new Error(
           `You cannot deposit more than $10,000 in a single transaction`
         );

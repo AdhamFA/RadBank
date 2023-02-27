@@ -8,14 +8,14 @@ import { AuthService } from 'src/app/services/auth.service';
 import { isLoadingSelector, errorSelector } from 'src/app/store/selectors';
 
 @Component({
-  selector: 'app-withdraw-dialog',
-  templateUrl: './withdraw-dialog.component.html',
-  styleUrls: ['./withdraw-dialog.component.scss'],
+  selector: 'app-create-account-dialog',
+  templateUrl: './create-account-dialog.component.html',
+  styleUrls: ['./create-account-dialog.component.scss']
 })
-export class WithdrawDialogComponent {
+export class CreateAccountDialogComponent {
   isLoading$: Observable<boolean>;
   error$: Observable<string>;
-  amount = new FormControl(0, [Validators.required]);
+  name = new FormControl('', [Validators.required]);
   constructor(
     private _router: Router,
     private _auth: AuthService,

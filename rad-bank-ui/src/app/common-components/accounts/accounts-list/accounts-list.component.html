@@ -17,14 +17,35 @@
   <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef> </mat-header-cell>
     <mat-cell *matCellDef="let account">
-        <div class="actions">
-            <button mat-stroked-button color="primary">Deposit</button>
-            <button mat-stroked-button color="primary">Withdraw</button>
-            <button mat-flat-button color="warn">Close</button>
-        </div>
+      <div class="actions">
+        <button
+          mat-stroked-button
+          (click)="openDepositDialog(account.id)"
+          color="primary"
+        >
+          Deposit
+        </button>
+        <button
+          mat-stroked-button
+          (click)="openWithdrawDialog(account.id)"
+          color="primary"
+        >
+          Withdraw
+        </button>
+        <button
+          mat-flat-button
+          (click)="openDeleteDialog(account.id)"
+          color="warn"
+        >
+          Close
+        </button>
+      </div>
     </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>
+<button mat-raised-button color="primary" (click)="createAccountDialog()">
+  Create New Account
+</button>
