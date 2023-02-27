@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { inject, NgModule, Type } from '@angular/core';
+import { CanActivateFn, RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AccountsPageComponent } from './pages/accounts-page/accounts-page.component';
 import { DepositPageComponent } from './pages/deposit-page/deposit-page.component';
@@ -7,6 +7,11 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 import { WithdrawPageComponent } from './pages/withdraw-page/withdraw-page.component';
+import { AuthGuard } from './services/auth.guard';
+
+function mapToCanActivate(providers: Array<Type<{canActivate: CanActivateFn}>>): CanActivateFn[] {
+  return providers.map(provider => (...params) => inject(provider).canActivate(...params));
+}
 
 const routes: Routes = [
   {
@@ -15,7 +20,8 @@ const routes: Routes = [
   },
   {
     path: 'sign-up',
-    component: SignUpPageComponent
+    component: SignUpPageComponent,
+    
   },
   {
     path: 'sign-in',
@@ -23,15 +29,18 @@ const routes: Routes = [
   },
   {
     path: 'withdraw',
-    component: WithdrawPageComponent
+    component: WithdrawPageComponent,
+    canActivate: mapToCanActivate([AuthGuard])
   },
   {
     path: 'deposit',
-    component: DepositPageComponent
+    component: DepositPageComponent,
+    canActivate: mapToCanActivate([AuthGuard])
   },
   {
     path: 'accounts',
-    component: AccountsPageComponent
+    component: AccountsPageComponent,
+    canActivate: mapToCanActivate([AuthGuard])
   }
 ];
 

@@ -14,10 +14,10 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <a [routerLink]="['/']" mat-menu-item>Home</a>
-      <a [routerLink]="['/accounts']" mat-menu-item>My Accounts</a>
-      <a *ngIf="isLoggedIn$ | async" (click)="signOut()" mat-menu-item>Sign out</a>
-      <a *ngIf="!(isLoggedIn$ | async)" [routerLink]="['/sign-in']" mat-menu-item>Sign in</a>
+      <a *ngIf="isAuthenticated() | async" [routerLink]="['/']" mat-menu-item>Home</a>
+      <a *ngIf="isAuthenticated() | async" [routerLink]="['/accounts']" mat-menu-item>My Accounts</a>
+      <a *ngIf="isAuthenticated() | async" (click)="signOut()" mat-menu-item>Sign out</a>
+      <a *ngIf="!(isAuthenticated() | async)" [routerLink]="['/sign-in']" mat-menu-item>Sign in</a>
     </mat-menu>
   </mat-toolbar>
 </header>

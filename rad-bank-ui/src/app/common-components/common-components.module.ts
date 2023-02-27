@@ -5,19 +5,28 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { HeroComponent } from './hero/hero.component';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { AccountsListComponent } from './accounts-list/accounts-list.component';
-import {MatTableModule} from '@angular/material/table';
-
+import { AccountsListComponent } from './accounts/accounts-list/accounts-list.component';
+import { MatTableModule } from '@angular/material/table';
+import { WithdrawDialogComponent } from './accounts/withdraw-dialog/withdraw-dialog.component';
+import { DepositDialogComponent } from './accounts/deposit-dialog/deposit-dialog.component';
 
 @NgModule({
-  declarations: [HeaderComponent, HeroComponent, SignInFormComponent, SignUpFormComponent, AccountsListComponent],
+  declarations: [
+    HeaderComponent,
+    HeroComponent,
+    SignInFormComponent,
+    SignUpFormComponent,
+    AccountsListComponent,
+    WithdrawDialogComponent,
+    DepositDialogComponent,
+  ],
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -36,6 +45,8 @@ import {MatTableModule} from '@angular/material/table';
     SignInFormComponent,
     SignUpFormComponent,
     AccountsListComponent,
+    WithdrawDialogComponent,
+    DepositDialogComponent,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,

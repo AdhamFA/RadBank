@@ -4,6 +4,11 @@
     <mat-cell *matCellDef="let account"> {{ account.id }} </mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Account Name </mat-header-cell>
+    <mat-cell *matCellDef="let account"> {{ account.name }} </mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="balance">
     <mat-header-cell *matHeaderCellDef> Balance </mat-header-cell>
     <mat-cell *matCellDef="let account"> {{ account.balance }} </mat-cell>

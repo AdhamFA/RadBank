@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, delay, map, mergeMap, Observable, of } from 'rxjs';
 import { UserInterface } from '../types/user.interface';
-import * as UserActions from './actions/user.actions';
+import * as UserActions from './user.actions';
 
 function getUser(): Observable<UserInterface> {
   const user: UserInterface = {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { signIn } from 'src/app/store/actions/user.actions';
+import { signIn } from 'src/app/store/user.actions';
 import { isLoadingSelector } from 'src/app/store/selectors';
 
 @Component({

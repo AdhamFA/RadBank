@@ -1,26 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { signIn, signOut } from 'src/app/store/actions/user.actions';
-import { loggedInSelector } from 'src/app/store/selectors';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
-  isLoggedIn$: Observable<boolean>;
-  constructor(private _store: Store, private _router: Router,) {
-    this.isLoggedIn$ = this._store.pipe(select(loggedInSelector))
-  }
+export class HeaderComponent {
+  constructor(private _router: Router, private _auth: AuthService) {}
 
-  ngOnInit(): void {
+  isAuthenticated(): Observable<boolean> {
+    return this._auth.isLoggedIn$;
   }
 
   signOut() {
-    this._store.dispatch(signOut());
-    this._router.navigate(["/"]);
+    this._auth.signOut();
+    this._router.navigate(['/']);
   }
 }
