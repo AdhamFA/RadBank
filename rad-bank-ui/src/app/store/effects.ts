@@ -22,18 +22,22 @@ export class UserEffects {
   );
 
   signUpSuccess$ = createEffect(() =>
-      this.actions$.pipe(
-        ofType(UserActions.signUpSuccess),
-        mergeMap(async ({ user }) => AccountActions.getAccounts({ email: user.email }))
+    this.actions$.pipe(
+      ofType(UserActions.signUpSuccess),
+      mergeMap(async ({ user }) =>
+        AccountActions.getAccounts({ email: user.email })
       )
-  )
+    )
+  );
 
   signInSuccess$ = createEffect(() =>
-      this.actions$.pipe(
-        ofType(UserActions.signInSuccess),
-        mergeMap(async ({ user }) => AccountActions.getAccounts({ email: user.email }))
+    this.actions$.pipe(
+      ofType(UserActions.signInSuccess),
+      mergeMap(async ({ user }) =>
+        AccountActions.getAccounts({ email: user.email })
       )
-  )
+    )
+  );
 
   signIn$ = createEffect(() =>
     this.actions$.pipe(
@@ -62,6 +66,66 @@ export class UserEffects {
       })
     )
   );
+
+  createAccount$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AccountActions.createAccount),
+      mergeMap(({ account, email }) => {
+        return this._userService.createAccount(account, email).pipe(
+          map((accounts) => AccountActions.createAccountSuccess({ accounts })),
+          catchError((error) =>
+            of(AccountActions.createAccountFailure({ error: error.message }))
+          )
+        );
+      })
+    )
+  );
+
+  deleteAccount$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AccountActions.deleteAccount),
+      mergeMap(({ accountID, email }) => {
+        return this._userService.deleteAccount(accountID, email).pipe(
+          map((accounts) => AccountActions.deleteAccountSuccess({ accounts })),
+          catchError((error) =>
+            of(AccountActions.deleteAccountFailure({ error: error.message }))
+          )
+        );
+      })
+    )
+  );
+
+  accountWithdraw$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AccountActions.accountWithdraw),
+      mergeMap(({ accountID, ammount, email }) => {
+        return this._userService.withdraw(accountID, email, ammount).pipe(
+          map((accounts) =>
+            AccountActions.accountWithdrawSuccess({ accounts })
+          ),
+          catchError((error) =>
+            of(AccountActions.accountWithdrawFailure({ error: error.message }))
+          )
+        );
+      })
+    )
+  );
+
+  accountDeposit$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(AccountActions.accountDeposit),
+    mergeMap(({ accountID, ammount, email }) => {
+      return this._userService.deposit(accountID, email, ammount).pipe(
+        map((accounts) =>
+          AccountActions.accountDepositSuccess({ accounts })
+        ),
+        catchError((error) =>
+          of(AccountActions.accountDepositFailure({ error: error.message }))
+        )
+      );
+    })
+  )
+);
 
   constructor(
     private actions$: Actions,
