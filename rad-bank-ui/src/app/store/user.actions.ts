@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { UserInterface } from 'src/app/types/user.interface';
+import { AccountInterface } from '../types/account.interface';
 
 export const signUp = createAction('[User] Sign Up', props<{user: UserInterface}>());
 export const signUpSuccess = createAction('[User] Sign Up Success', props<{user: UserInterface}>())

@@ -12,6 +12,11 @@ export const userSelector = createSelector(
   (state) => state.user
 );
 
+export const accountsSelector = createSelector(
+  selectFeature,
+  (state) => state.accounts
+);
+
 export const errorSelector = createSelector(
   selectFeature,
   (state) => state.error

@@ -18,7 +18,7 @@
         getErrorMessage(lastName)
       }}</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary">Sign Up</button>
+    <button mat-raised-button (click)="signUp()" color="primary">Sign Up</button>
     <button mat-button [routerLink]="['/sign-in']" color="primary">Already have an account? Sign In!</button>
   </div>
   
