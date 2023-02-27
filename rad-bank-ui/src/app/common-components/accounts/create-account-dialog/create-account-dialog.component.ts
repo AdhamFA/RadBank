@@ -45,7 +45,6 @@ export class CreateAccountDialogComponent {
         balance: 100,
       };
       this.user$.subscribe((user) => {
-        console.log("Dispatching")
         this._store.dispatch(
           createAccount({ account: newAccount, email: user.email })
         );

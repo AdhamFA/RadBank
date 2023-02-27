@@ -115,7 +115,6 @@ export class MockAPIServiceService {
       });
     } else {
       let newBalance = +this.accounts[email][accountIndex].balance + +amount;
-      console.log(newBalance);
       let updatedAccount: AccountInterface = {
         id: account.id,
         name: account.name,
