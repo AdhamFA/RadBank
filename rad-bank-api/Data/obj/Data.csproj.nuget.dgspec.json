@@ -1,30 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/rad-bank-api/rad-bank-api.csproj": {}
+    "/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/Data.csproj": {}
   },
   "projects": {
-    "/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/rad-bank-api/rad-bank-api.csproj": {
+    "/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/rad-bank-api/rad-bank-api.csproj",
-        "projectName": "rad-bank-api",
-        "projectPath": "/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/rad-bank-api/rad-bank-api.csproj",
+        "projectUniqueName": "/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/Data.csproj",
+        "projectName": "Data",
+        "projectPath": "/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/Data.csproj",
         "packagesPath": "/Users/adhamalsalah/.nuget/packages/",
-        "outputPath": "/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/rad-bank-api/obj/",
+        "outputPath": "/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/adhamalsalah/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net6.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -35,16 +35,18 @@
         }
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.3, )"
             },
-            "Swashbuckle.AspNetCore": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[7.0.3, )"
             }
           },
           "imports": [
@@ -59,9 +61,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
