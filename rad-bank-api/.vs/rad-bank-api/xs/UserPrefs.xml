@@ -1,29 +1,39 @@
 ﻿<Properties StartupConfiguration="{53E0423A-6F0D-44E5-B740-D5D915D405FE}|https">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.rad-bank-api PreferredExecutionTarget="/Applications/Google Chrome.app" FirstBuild="True" />
   <MonoDevelop.Ide.ItemProperties.Data FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Data/Class1.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="rad-bank-api/Program.cs">
     <Files>
-      <File FileName="rad-bank-api/Program.cs" />
-      <File FileName="rad-bank-api/WeatherForecast.cs" />
-      <File FileName="rad-bank-api/Controllers/WeatherForecastController.cs" />
-      <File FileName="Data/Class1.cs" Line="7" Column="1" />
+      <File FileName="rad-bank-api/Program.cs" Line="4" Column="1" />
+      <File FileName="rad-bank-api/appsettings.json" />
+      <File FileName="rad-bank-api/appsettings.Development.json" />
+      <File FileName="rad-bank-api/Properties/launchSettings.json" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="rad-bank-api" expanded="True">
             <Node name="Data" expanded="True">
-              <Node name="Class1.cs" selected="True" />
+              <Node name="DB" expanded="True">
+                <Node name="Context" expanded="True" />
+                <Node name="Entities" expanded="True" />
+                <Node name="Interfaces" expanded="True" />
+                <Node name="Repositories" expanded="True" />
+              </Node>
             </Node>
-            <Node name="rad-bank-api" expanded="True" />
+            <Node name="rad-bank-api" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
+              <Node name="Program.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
