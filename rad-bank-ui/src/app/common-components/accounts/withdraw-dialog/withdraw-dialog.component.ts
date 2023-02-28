@@ -3,10 +3,14 @@ import { FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { map, Observable, take } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { accountWithdraw } from 'src/app/store/account.actions';
-import { isLoadingSelector, errorSelector, userSelector } from 'src/app/store/selectors';
+import {
+  isLoadingSelector,
+  errorSelector,
+  userSelector,
+} from 'src/app/store/selectors';
 import { UserInterface } from 'src/app/types/user.interface';
 
 @Component({
@@ -27,13 +31,13 @@ export class WithdrawDialogComponent {
   ) {
     this.isLoading$ = this._store.pipe(select(isLoadingSelector));
     this.error$ = this._store.pipe(select(errorSelector));
-    this.user$ = this._store.pipe(select(userSelector))
+    this.user$ = this._store.pipe(select(userSelector));
   }
 
   withdraw() {
     if (this.amount.value) {
-      this.user$.subscribe((user) => {
-        this._store.dispatch(
+      this.user$.pipe(take(1)).subscribe((user) => {
+        return this._store.dispatch(
           accountWithdraw({
             accountID: this.data.id,
             ammount: this.amount.value!,

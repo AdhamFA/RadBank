@@ -3,16 +3,12 @@ import { Observable, of, delay, throwError } from 'rxjs';
 import { AccountInterface } from '../types/account.interface';
 import { UserInterface } from '../types/user.interface';
 
-interface Accounts {
-  [key: string]: AccountInterface[];
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class MockAPIServiceService {
   users: UserInterface[] = [];
-  accounts: Accounts = {};
+  accounts = new Map<string, AccountInterface[] | undefined>();
   constructor() {}
 
   getUser(email: string): Observable<UserInterface> {
@@ -30,104 +26,173 @@ export class MockAPIServiceService {
 
   createUser(newUser: UserInterface): Observable<UserInterface> {
     this.users.push(newUser);
-    this.accounts[newUser.email] = [];
+    this.accounts.set(newUser.email, []);
     return of(newUser).pipe(delay(2000));
   }
 
   getAccounts(email: string): Observable<AccountInterface[]> {
-    return of(this.accounts[email]).pipe(delay(2000));
-  }
+    if (this.accounts.has(email)) {
+      let accounts = this.accounts.get(email);
+      if (accounts) return of(accounts).pipe(delay(2000));
 
-  createAccount(newAccount: AccountInterface, email: string) {
-    let accounts = this.accounts[email];
-    let acc: AccountInterface = {
-      id: '00000' + (accounts.length + 1),
-      name: newAccount.name,
-      balance: newAccount.balance,
-    };
-    accounts = [...accounts, acc];
-    this.accounts[email] = accounts;
-
-    return of(this.accounts[email]).pipe(delay(2000));
-  }
-
-  deleteAccount(accountId: string, email: string) {
-    this.accounts[email] = this.accounts[email].filter(
-      (account) => account.id !== accountId
-    );
-
-    return of(this.accounts[email]).pipe(delay(2000));
-  }
-
-  withdraw(accountId: string, email: string, amount: number) {
-    let accounts = this.accounts[email];
-    let accountIndex = this.accounts[email].findIndex(
-      (account) => account.id === accountId
-    );
-    let account = accounts[accountIndex];
-    let balance = this.accounts[email][accountIndex].balance;
-    if (amount / balance > 0.9) {
       return throwError(() => {
-        const error: any = new Error(
-          `You cannot take out more than 90% of your balance at once, please divide your withdrawls into seperate transactions`
-        );
-        error.timestamp = Date.now();
-        return error;
-      });
-    }
-    let newBalance = +this.accounts[email][accountIndex].balance - +amount;
-    if (newBalance < 100) {
-      return throwError(() => {
-        const error: any = new Error(`Your balance cannot be lower than $100`);
+        const error: any = new Error(`Accounts don't exist`);
         error.timestamp = Date.now();
         return error;
       });
     } else {
-      let updatedAccount: AccountInterface = {
-        id: account.id,
-        name: account.name,
-        balance: newBalance,
+      return throwError(() => {
+        const error: any = new Error(`Accounts don't exist`);
+        error.timestamp = Date.now();
+        return error;
+      });
+    }
+  }
+
+  createAccount(newAccount: AccountInterface, email: string) {
+    if (this.accounts.has(email)) {
+      let accounts = this.accounts.get(email);
+      let acc: AccountInterface = {
+        id: '00000' + (accounts!.length + 1),
+        name: newAccount.name,
+        balance: newAccount.balance,
       };
-      accounts = [
-        ...this.accounts[email].filter((account) => account.id !== accountId),
-        updatedAccount,
-      ];
+      accounts = [...accounts!, acc];
+      this.accounts.set(email, accounts);
 
-      this.accounts[email] = accounts;
+      if (accounts) return of(accounts).pipe(delay(2000));
 
-      return of(this.accounts[email]).pipe(delay(2000));
+      return throwError(() => {
+        const error: any = new Error(`Account does not exist`);
+        error.timestamp = Date.now();
+        return error;
+      });
+    } else {
+      return throwError(() => {
+        const error: any = new Error(`Account does not exist`);
+        error.timestamp = Date.now();
+        return error;
+      });
+    }
+  }
+
+  deleteAccount(accountId: string, email: string) {
+    this.accounts.set(
+      email,
+      this.accounts.get(email)!.filter((account) => account.id !== accountId)
+    );
+
+    let accounts = this.accounts.get(email);
+
+    if (accounts) return of(accounts).pipe(delay(2000));
+
+    return throwError(() => {
+      const error: any = new Error(`Accounts do not exist!`);
+      error.timestamp = Date.now();
+      return error;
+    });
+  }
+
+  withdraw(accountId: string, email: string, amount: number) {
+    if (this.accounts.has(email)) {
+      let accounts = this.accounts.get(email);
+      let account = accounts!.find((account) => account.id === accountId);
+      let balance = account!.balance;
+      if (amount / balance! > 0.9) {
+        return throwError(() => {
+          const error: any = new Error(
+            `You cannot take out more than 90% of your balance at once, please divide your withdrawls into seperate transactions`
+          );
+          error.timestamp = Date.now();
+          return error;
+        });
+      }
+      let newBalance = +balance! - +amount;
+      if (newBalance < 100) {
+        return throwError(() => {
+          const error: any = new Error(
+            `Your balance cannot be lower than $100`
+          );
+          error.timestamp = Date.now();
+          return error;
+        });
+      } else {
+        let updatedAccount: AccountInterface = {
+          id: account!.id,
+          name: account!.name,
+          balance: newBalance,
+        };
+        accounts = [
+          ...accounts!.filter((account) => account.id !== accountId),
+          updatedAccount,
+        ];
+
+        this.accounts.set(email, accounts);
+
+        if (accounts) return of(accounts).pipe(delay(2000));
+
+        return throwError(() => {
+          const error: any = new Error(`Accounts do not exist!`);
+          error.timestamp = Date.now();
+          return error;
+        });
+      }
+    } else {
+      return throwError(() => {
+        const error: any = new Error(`Accounts do not exist!`);
+        error.timestamp = Date.now();
+        return error;
+      });
     }
   }
 
   deposit(accountId: string, email: string, amount: number) {
-    let accounts = this.accounts[email];
-    let accountIndex = this.accounts[email].findIndex(
-      (account) => account.id === accountId
-    );
-    let account = accounts[accountIndex];
-    if (amount > 10000) {
+    if (this.accounts.has(email)) {
+      let accounts = this.accounts.get(email);
+      let account = accounts!.find((acc) => acc.id === accountId);
+      if (account) {
+        if (amount > 10000) {
+          return throwError(() => {
+            const error: any = new Error(
+              `You cannot deposit more than $10,000 in a single transaction`
+            );
+            error.timestamp = Date.now();
+            return error;
+          });
+        } else {
+          let newBalance = +account.balance + +amount;
+          let updatedAccount: AccountInterface = {
+            id: account.id,
+            name: account.name,
+            balance: newBalance,
+          };
+          accounts = [
+            ...accounts!.filter((account) => account.id !== accountId),
+            updatedAccount,
+          ];
+
+          this.accounts.set(email, accounts);
+          if (accounts) return of(accounts).pipe(delay(2000));
+
+          return throwError(() => {
+            const error: any = new Error(`Account does not exist`);
+            error.timestamp = Date.now();
+            return error;
+          });
+        }
+      } else {
+        return throwError(() => {
+          const error: any = new Error(`Account does not exist!`);
+          error.timestamp = Date.now();
+          return error;
+        });
+      }
+    } else {
       return throwError(() => {
-        const error: any = new Error(
-          `You cannot deposit more than $10,000 in a single transaction`
-        );
+        const error: any = new Error(`Accounts do not exist!`);
         error.timestamp = Date.now();
         return error;
       });
-    } else {
-      let newBalance = +this.accounts[email][accountIndex].balance + +amount;
-      let updatedAccount: AccountInterface = {
-        id: account.id,
-        name: account.name,
-        balance: newBalance,
-      };
-      accounts = [
-        ...this.accounts[email].filter((account) => account.id !== accountId),
-        updatedAccount,
-      ];
-
-      this.accounts[email] = accounts;
-
-      return of(this.accounts[email]).pipe(delay(2000));
     }
   }
 }

@@ -3,7 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { map, Observable, take } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { createAccount } from 'src/app/store/account.actions';
 import {
@@ -44,8 +44,8 @@ export class CreateAccountDialogComponent {
         name: this.name.value,
         balance: 100,
       };
-      this.user$.subscribe((user) => {
-        this._store.dispatch(
+      this.user$.pipe(take(1)).subscribe((user) => {
+        return this._store.dispatch(
           createAccount({ account: newAccount, email: user.email })
         );
       });
