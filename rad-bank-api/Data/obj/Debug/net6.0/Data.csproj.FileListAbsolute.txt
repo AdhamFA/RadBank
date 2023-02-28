@@ -1,0 +1,14 @@
+/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/bin/Debug/net6.0/Data.deps.json
+/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/bin/Debug/net6.0/Data.runtimeconfig.json
+/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/bin/Debug/net6.0/Data.dll
+/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/bin/Debug/net6.0/Data.pdb
+/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/obj/Debug/net6.0/Data.csproj.AssemblyReference.cache
+/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/obj/Debug/net6.0/Data.GeneratedMSBuildEditorConfig.editorconfig
+/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/obj/Debug/net6.0/Data.AssemblyInfoInputs.cache
+/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/obj/Debug/net6.0/Data.AssemblyInfo.cs
+/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/obj/Debug/net6.0/Data.csproj.CoreCompileInputs.cache
+/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/obj/Debug/net6.0/Data.dll
+/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/obj/Debug/net6.0/refint/Data.dll
+/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/obj/Debug/net6.0/Data.pdb
+/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/obj/Debug/net6.0/Data.genruntimeconfig.cache
+/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/obj/Debug/net6.0/ref/Data.dll

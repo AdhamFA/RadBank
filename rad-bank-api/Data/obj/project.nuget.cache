@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "EdbYZOYeAZHAq4nfCO1dCpo7tK8zcMdvhn4+Hr3Q5ELN4bckvM/f5jzFBGZhw0Yf8wd8dby14kRenM8ytWjPaA==",
+  "dgSpecHash": "fgD6EJWVbOo9kI0WwL/yZuFgckgrO+GDZh7ukSSj72KSP5j6OwOe887s/OBCitUk79kbB/H03376EFrQamv/uA==",
   "success": true,
   "projectFilePath": "/Users/adhamalsalah/Projects/githubrepos/RadBank/rad-bank-api/Data/Data.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,7 @@
     "/Users/adhamalsalah/.nuget/packages/microsoft.entityframeworkcore.relational/7.0.3/microsoft.entityframeworkcore.relational.7.0.3.nupkg.sha512",
     "/Users/adhamalsalah/.nuget/packages/microsoft.entityframeworkcore.sqlite/7.0.3/microsoft.entityframeworkcore.sqlite.7.0.3.nupkg.sha512",
     "/Users/adhamalsalah/.nuget/packages/microsoft.entityframeworkcore.sqlite.core/7.0.3/microsoft.entityframeworkcore.sqlite.core.7.0.3.nupkg.sha512",
+    "/Users/adhamalsalah/.nuget/packages/microsoft.entityframeworkcore.tools/7.0.3/microsoft.entityframeworkcore.tools.7.0.3.nupkg.sha512",
     "/Users/adhamalsalah/.nuget/packages/microsoft.extensions.caching.abstractions/7.0.0/microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "/Users/adhamalsalah/.nuget/packages/microsoft.extensions.caching.memory/7.0.0/microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
     "/Users/adhamalsalah/.nuget/packages/microsoft.extensions.configuration.abstractions/7.0.0/microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
