@@ -1,3 +1,13 @@
+-I did not connect the API and front-end, however that can easily be done by utilzing Nswag gen to automatically generate me an API service on the angular side made from the openAPI documentation.
+
+-With this role being primarily front-end, I heavily focused on the angular implementation, There is an auth-guard that utilizes the mock API service, and the application utilizes NGRX.
+
+-I did add storybooks and replaced the Karma testing with the Jest testing framework, HOWEVER, I did not have time to properly implement those. All that is needed for them is for tests to be written regarding the business logic, and for the test suites and storybooks to have mock services in order to properly work. Jest has solid documentation on setting up their Mock functions, storybooks' angular documentation is HEAVILY lacking.
+
+-Even though the test did not require a DB, I did utilize SQLite and created a DB library that utilizes entity frameworks.
+
+
+
 # RadBank
 
 RadBank is a solution to a coding test to develop a basic bank web application.
