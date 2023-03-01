@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "yJAcBR08MyhBkTF8KhdrO3dz8/XnRateK8sCUPjIOqM=",
+  "Source": "rad-bank-api",
+  "BasePath": "_content/rad-bank-api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

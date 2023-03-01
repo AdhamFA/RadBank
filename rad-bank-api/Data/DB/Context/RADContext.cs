@@ -10,7 +10,7 @@ namespace Data.DB.Context
 		public DbSet<Account> Accounts { get; set; }
 		public string DbPath { get; }
 		public RADContext()
-		{
+        {
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);
             DbPath = System.IO.Path.Join(path, "fuelrecords.db");

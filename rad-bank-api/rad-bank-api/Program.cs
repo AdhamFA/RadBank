@@ -2,13 +2,10 @@
 using Data.DB.Interfaces;
 using Data.DB.Repositories;
 using Microsoft.EntityFrameworkCore;
+using rad_bank_api.Interfaces;
+using rad_bank_api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
-var configuration = new ConfigurationBuilder()
-               .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-               .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-               .Build();
 
 // Add services to the container.
 
@@ -18,7 +15,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IAccountRepository, AccountRepository>();
-builder.Services.AddDbContext<RADContext>(options => options.UseSqlite(configuration["ConnectionStrings:DefaultConnection"]));
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IAccountService, AccountService>();
+builder.Services.AddDbContext<RADContext>();
 
 var app = builder.Build();
 
